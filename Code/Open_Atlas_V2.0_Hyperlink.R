@@ -29,3 +29,21 @@ for (i in 1:length(r_list_2)){
   cat(md_item)
 }
 sink()
+
+#HTML Version
+
+sink("links.html")
+
+for (i in 1:length(r_list_2)){  
+  LAD_Name <- name[i]
+  LAD_Code <- code[i]
+  url_loc <- paste("http://data.alex-singleton.com/2011_ATLAS/",r_list[i],sep='')
+  tracker <- paste("onClick=\"_gaq.push(['_trackEvent', 'CensusAtlas2011V2', 'Download', '",LAD_Name,"']);",sep='')
+  
+md_item <- paste("<a href='",url_loc,"'",tracker,">",LAD_Code,": ",LAD_Name,"</a><br>")
+  
+
+  cat(md_item)
+}
+sink()
+
